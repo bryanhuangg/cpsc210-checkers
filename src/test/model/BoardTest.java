@@ -74,6 +74,16 @@ class BoardTest {
     }
 
     @Test
+    void testEmptyTile() {
+        testBoard.addPiece(1, 0,  true);
+        assertTrue(testBoard.emptyTile(3,2));
+        assertFalse(testBoard.emptyTile(1,0));
+
+        testBoard.addPiece(3, 2,  true);
+        assertFalse(testBoard.emptyTile(3,2));
+    }
+
+    @Test
     void testDeletePiece() {
         testBoard.addPiece(7, 0, true);
         testBoard.deletePiece(testBoard.getPieces().get(0));
