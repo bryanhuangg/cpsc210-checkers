@@ -83,6 +83,10 @@ class BoardTest {
         testBoard.addPiece(0, 1,  true);
         assertFalse(testBoard.emptyTile(0,1));
         assertTrue(testBoard.emptyTile(3,1));
+
+        testBoard.addPiece(0, 7,  false);
+        assertFalse(testBoard.emptyTile(0,7));
+        assertTrue(testBoard.emptyTile(0,5));
     }
 
     @Test
@@ -111,5 +115,20 @@ class BoardTest {
         testBoard.movePiece(testBoard.getPieces().get(1), 8, -1);
         assertEquals(0, testBoard.getPieces().get(1).getXPos());
         assertEquals(1, testBoard.getPieces().get(1).getYPos());
+    }
+
+    @Test
+    void getBaseBoard() {
+        int[][] baseBoard =
+                        {{ 0, 1, 0, 1, 0, 1, 0, 1},
+                        { 1, 0, 1, 0, 1, 0, 1, 0},
+                        { 0, 1, 0, 1, 0, 1, 0, 1},
+                        { 1, 0, 1, 0, 1, 0, 1, 0},
+                        { 0, 1, 0, 1, 0, 1, 0, 1},
+                        { 1, 0, 1, 0, 1, 0, 1, 0},
+                        { 0, 1, 0, 1, 0, 1, 0, 1},
+                        { 1, 0, 1, 0, 1, 0, 1, 0}};
+
+        assertEquals(baseBoard,testBoard.getBaseBoard());
     }
 }
