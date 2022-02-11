@@ -159,23 +159,23 @@ public class CheckersApp {
     }
 
 
-
+    // MODIFIES: this
+    // EFFECT: place all in-play pieces onto a blank checkers board and renders it
     private void updateBoard() {
         int[][] currentBoard = board.getBoard();
         for (Piece p: board.getPieces()) {
             if (p.getIsBlackPiece()) {
-                currentBoard[p.getYPos()][p.getXPos()] = 3;
+                currentBoard[p.getYPos()][p.getXPos()] = 2;
             } else {
-                currentBoard[p.getYPos()][p.getXPos()] = 4;
+                currentBoard[p.getYPos()][p.getXPos()] = 3;
             }
         }
         renderBoard(currentBoard);
     }
 
-    // MODIFIES: this
-    // EFFECT: display current checkers board
-    private void renderBoard(int[][] board) {
 
+    // EFFECT: print out current checkers board
+    private void renderBoard(int[][] board) {
         System.out.println("   0  1  2  3  4  5  6  7");
         for (int y = 0; y <= 7; y++) {
             System.out.print(y + " ");
@@ -188,11 +188,9 @@ public class CheckersApp {
                     case 1:
                         System.out.print("[ ]");
                         break;
-
                     case 2:
                         System.out.print("[B]");
                         break;
-
                     default:
                         System.out.print("[W]");
                 }
