@@ -27,6 +27,14 @@ As a user, I want to be able to add pieces to my checkers board
 As a user, I want to be able to remove pieces from my checkers board
 </li>
 
+<li>
+As a user, I want to see how many pieces are currently on my board
+</li>
+
+<li>
+As a user, I want to be able to move my pieces 
+</li>
+
 <li> 
 As a user, I want to be able to view the current state of my checkers board
 </li>

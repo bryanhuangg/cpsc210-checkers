@@ -4,42 +4,42 @@ package model;
 // Represents a Checkers piece on a board
 public class Piece {
 
-    private static int x;               // X position of a piece
-    private static int y;               // Y position of a piece
-    private static boolean blackPiece;  // true if black piece, false if white piece
+    private int posX;               // X position of a piece
+    private int posY;               // Y position of a piece
+    private boolean isBlackPiece;  // true if black piece, false if white piece
 
     // EFFECT: create a new checkers piece on (x,y) with a boolean to clarify piece colour
     public Piece(int x, int y, boolean blackPiece) {
-        Piece.x = x;
-        Piece.y = y;
-        Piece.blackPiece = blackPiece;
+        posX = x;
+        posY = y;
+        isBlackPiece = blackPiece;
     }
 
     // MODIFY: this
     // EFFECT: set x position of the checkers piece
-    public void setX(int x) {
-        Piece.x = x;
+    public void setXPos(int x) {
+        posX = x;
     }
 
     // MODIFY: this
     // EFFECT: set y position of the checkers piece
-    public void setY(int y) {
-        Piece.y = y;
+    public void setYPos(int y) {
+        posY = y;
     }
 
     // EFFECT: return x position of the checkers piece
-    public int getX() {
-        return x;
+    public int getXPos() {
+        return posX;
     }
 
     // EFFECT: return y position of the checkers piece
-    public int getY() {
-        return y;
+    public int getYPos() {
+        return posY;
     }
 
 
     // EFFECT: return true if a black piece, else false;
-    public boolean isBlackPiece() {
-        return blackPiece;
+    public boolean getIsBlackPiece() {
+        return isBlackPiece;
     }
 }

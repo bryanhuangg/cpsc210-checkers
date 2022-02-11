@@ -16,20 +16,20 @@ public class PieceTest {
 
     @Test
     void testConstructor() {
-        assertEquals(1, testPiece.getX());
-        assertEquals(0, testPiece.getY());
-        assertTrue(testPiece.isBlackPiece());
+        assertEquals(1, testPiece.getXPos());
+        assertEquals(0, testPiece.getYPos());
+        assertTrue(testPiece.getIsBlackPiece());
     }
 
     @Test
     void testSetX() {
-        testPiece.setX(3);
-        assertEquals(3, testPiece.getX());
+        testPiece.setXPos(3);
+        assertEquals(3, testPiece.getXPos());
     }
 
     @Test
     void testSetY() {
-        testPiece.setY(1);
-        assertEquals(1, testPiece.getY());
+        testPiece.setYPos(1);
+        assertEquals(1, testPiece.getYPos());
     }
 }

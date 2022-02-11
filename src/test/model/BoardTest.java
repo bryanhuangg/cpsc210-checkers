@@ -57,10 +57,11 @@ class BoardTest {
         assertFalse(testBoard.addPiece(1,-1, true ));
         assertFalse(testBoard.addPiece(0,0,false));
         assertFalse(testBoard.addPiece(2,4, false));
-
+        assertFalse(testBoard.addPiece(2,6,true));
 
         // Check overlapping
         assertTrue(testBoard.addPiece(3, 0,  true));
+        assertFalse(testBoard.addPiece(3, 0,  true));
         assertFalse(testBoard.addPiece(3, 0 , false));
 
         // Check if pieces are actually added to the board
@@ -79,8 +80,11 @@ class BoardTest {
         assertTrue(testBoard.emptyTile(3,2));
         assertFalse(testBoard.emptyTile(1,0));
 
-        testBoard.addPiece(3, 2,  true);
-        assertFalse(testBoard.emptyTile(3,2));
+
+        testBoard.addPiece(0, 1,  true);
+        assertFalse(testBoard.emptyTile(0,1));
+        assertTrue(testBoard.emptyTile(3,1));
+
     }
 
     @Test
@@ -90,6 +94,24 @@ class BoardTest {
         assertEquals(0,testBoard.getPieces().size());
     }
 
+    @Test
+    void testMovePiece() {
+        testBoard.addPiece(0,1, false);
+        testBoard.movePiece(testBoard.getPieces().get(0), 2, 3);
+        assertEquals(2, testBoard.getPieces().get(0).getXPos());
+        assertEquals(3, testBoard.getPieces().get(0).getYPos());
 
+        testBoard.movePiece(testBoard.getPieces().get(0), 0, 0);
+        assertEquals(2, testBoard.getPieces().get(0).getXPos());
+        assertEquals(3, testBoard.getPieces().get(0).getYPos());
 
+        testBoard.addPiece(0,1, false);
+        testBoard.movePiece(testBoard.getPieces().get(1), 2, 3);
+        assertEquals(0, testBoard.getPieces().get(1).getXPos());
+        assertEquals(1, testBoard.getPieces().get(1).getYPos());
+
+        testBoard.movePiece(testBoard.getPieces().get(1), 8, -1);
+        assertEquals(0, testBoard.getPieces().get(1).getXPos());
+        assertEquals(1, testBoard.getPieces().get(1).getYPos());
+    }
 }

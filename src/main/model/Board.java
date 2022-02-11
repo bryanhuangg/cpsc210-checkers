@@ -31,20 +31,25 @@ public class Board {
 
         if (withinBoard(x,y) && placeableTile(x,y) && emptyTile(x,y)) {
 
-
             Piece newPiece = new Piece(x,y,blackPiece);
             pieces.add(pieces.size(), newPiece);
 
-            if (blackPiece) {
-                board[y][x] = 2;
-            } else {
-                board[y][x] = 3;
-            }
             return true;
         }
         return false;
     }
 
+    // REQUIRE: current piece on a black tile
+    // MODIFIES: this
+    // EFFECT: if legal, move a piece to given coordinate and produce true, else false
+    public void movePiece(Piece p, int x, int y) {
+        if (withinBoard(x,y) && placeableTile(x,y) && emptyTile(x,y)) {
+            board[p.getYPos()][p.getXPos()] = 1;
+            p.setXPos(x);
+            p.setYPos(y);
+
+        }
+    }
 
 
     // REQUIRES: index < pieces.size()
@@ -52,8 +57,7 @@ public class Board {
     // EFFECT: removes the piece on given index of pieces and produce true, else false
     public void deletePiece(Piece piece) {
         pieces.remove(piece);
-        board[piece.getY()][piece.getX()] = 1;
-        System.out.println(pieces);
+        board[piece.getYPos()][piece.getXPos()] = 1;
     }
 
     // EFFECT: produce true if coordinate is within the board, else false
@@ -69,16 +73,16 @@ public class Board {
     // REQUIRE: x & y are within [0, 7]
     // EFFECT: return true if tile can hold a piece (aka black tile), else false
     public boolean placeableTile(int x, int y) {
-
         return (board[y][x] == 1);
     }
+
 
     // EFFECT: produce true if no piece is already on a tile, else false
     public boolean emptyTile(int x, int y) {
 
         for (Piece p : pieces) {
-            if (x == p.getX()) {
-                if (y == p.getY()) {
+            if (x == p.getXPos()) {
+                if (y == p.getYPos()) {
                     return false;
                 }
             }
