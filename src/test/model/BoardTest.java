@@ -51,15 +51,6 @@ class BoardTest {
     }
 
     @Test
-    void testEmptyTile() {
-        testBoard.addPiece(1, 0,  true);
-        assertTrue(testBoard.emptyTile(3,2));
-        assertFalse(testBoard.emptyTile(1,0));
-    }
-
-
-
-    @Test
     void testAddPiece() {
         // Check tile validity
         assertFalse(testBoard.addPiece(8,0, true ));

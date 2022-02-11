@@ -94,7 +94,7 @@ public class Board {
     }
 
     // RETURN: return matrix representing the board
-    public int[][] getBaseBoard() {
+    public int[][] getBoard() {
         return board;
     }
 }
