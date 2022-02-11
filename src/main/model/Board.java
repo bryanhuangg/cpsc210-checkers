@@ -93,7 +93,7 @@ public class Board {
         return pieces;
     }
 
-    // RETURN: return matrix representing the board
+    // RETURN: return matrix representing the checkers board
     public int[][] getBaseBoard() {
         return board;
     }
