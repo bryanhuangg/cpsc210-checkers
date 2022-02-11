@@ -4,6 +4,8 @@ import model.Board;
 import model.Piece;
 
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CheckersApp {
@@ -70,9 +72,22 @@ public class CheckersApp {
         } else if (command.equals("m")) {
             movePiece();
         } else if (command.equals("c")) {
-            System.out.println("Current number of pieces on the board: " + board.getPieces().size());
+            countPieces();
         } else {
             System.out.println("Selection not valid...");
+        }
+    }
+
+    // EFFECTS: print out how many pieces are currently on the board
+    private void countPieces() {
+        List<Piece> empty = new LinkedList<>();
+
+        if (!board.getPieces().equals(empty)) {
+            System.out.println();
+            System.out.println("Current number of pieces on the board: " + board.getPieces().size());
+        } else {
+            System.out.println();
+            System.out.println("There are no pieces currently on the board.");
         }
     }
 
@@ -92,8 +107,6 @@ public class CheckersApp {
             board.addPiece(x, y, blackPiece);
             System.out.println();
             System.out.println("Piece successfully added!");
-            System.out.println("Total Pieces: " + board.getPieces().size());
-
         } else {
             System.out.println();
             System.out.println("Error - can not add piece there");
@@ -116,15 +129,14 @@ public class CheckersApp {
             if (x == p.getXPos() && y == p.getYPos()) {
                 remove = p;
             } else {
+                System.out.println();
                 System.out.println("Error - piece not found");
             }
         }
         
         board.deletePiece(remove);
+        System.out.println();
         System.out.println("Piece successfully removed");
-        System.out.println("Total Pieces: " + board.getPieces().size());
-
-
     }
 
 
@@ -134,13 +146,12 @@ public class CheckersApp {
         Scanner moveInput = new Scanner(System.in);
 
         System.out.println("Which piece would you like moved?");
-        System.out.println("Enter the piece's x and y coordinates");
+        System.out.println("Enter the piece's current x and y coordinates");
 
         int x = moveInput.nextInt();
         int y = moveInput.nextInt();
         Piece move = null;
 
-        System.out.println("Where do you want this piece to be move?");
         System.out.println("Enter the piece's target x and y coordinates");
 
         int targetX = moveInput.nextInt();
@@ -150,11 +161,14 @@ public class CheckersApp {
         for (Piece p : board.getPieces()) {
             if (x == p.getXPos() && y == p.getYPos()) {
                 move = p;
+                break;
             } else {
+                System.out.println();
                 System.out.println("Error - piece not found");
             }
         }
         board.movePiece(move, targetX, targetY);
+        System.out.println();
         System.out.println("Piece successfully moved");
     }
 
@@ -162,7 +176,8 @@ public class CheckersApp {
     // MODIFIES: this
     // EFFECT: place all in-play pieces onto a blank checkers board and renders it
     private void updateBoard() {
-        int[][] currentBoard = board.getBoard();
+        int[][] currentBoard = board.getBaseBoard();
+
         for (Piece p: board.getPieces()) {
             if (p.getIsBlackPiece()) {
                 currentBoard[p.getYPos()][p.getXPos()] = 2;
@@ -170,6 +185,7 @@ public class CheckersApp {
                 currentBoard[p.getYPos()][p.getXPos()] = 3;
             }
         }
+
         renderBoard(currentBoard);
     }
 

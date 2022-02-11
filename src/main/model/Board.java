@@ -17,7 +17,7 @@ public class Board {
             { 1, 0, 1, 0, 1, 0, 1, 0}};
 
     // List of all the pieces currently on the board
-    private final List<Piece> pieces;
+    private List<Piece> pieces;
 
     // EFFECT: create an empty board with no pieces
     public Board() {
@@ -33,7 +33,6 @@ public class Board {
 
             Piece newPiece = new Piece(x,y,blackPiece);
             pieces.add(pieces.size(), newPiece);
-
             return true;
         }
         return false;
@@ -41,13 +40,11 @@ public class Board {
 
     // REQUIRE: current piece on a black tile
     // MODIFIES: this
-    // EFFECT: if legal, move a piece to given coordinate and produce true, else false
+    // EFFECT: if given a placeable tile, move a piece to given coordinate and produce true, else false
     public void movePiece(Piece p, int x, int y) {
         if (withinBoard(x,y) && placeableTile(x,y) && emptyTile(x,y)) {
-            board[p.getYPos()][p.getXPos()] = 1;
             p.setXPos(x);
             p.setYPos(y);
-
         }
     }
 
@@ -57,7 +54,6 @@ public class Board {
     // EFFECT: removes the piece on given index of pieces and produce true, else false
     public void deletePiece(Piece piece) {
         pieces.remove(piece);
-        board[piece.getYPos()][piece.getXPos()] = 1;
     }
 
     // EFFECT: produce true if coordinate is within the board, else false
@@ -81,13 +77,10 @@ public class Board {
     public boolean emptyTile(int x, int y) {
 
         for (Piece p : pieces) {
-            if (x == p.getXPos()) {
-                if (y == p.getYPos()) {
-                    return false;
-                }
+            if (x == p.getXPos() && y == p.getYPos()) {
+                return false;
             }
         }
-
         return true;
     }
 
@@ -96,8 +89,19 @@ public class Board {
         return pieces;
     }
 
-    // RETURN: return matrix representing the board
-    public int[][] getBoard() {
-        return board;
+    // RETURN: return matrix representing an empty checkers board
+    public int[][] getBaseBoard() {
+
+        int[][] baseBoard =
+                {{ 0, 1, 0, 1, 0, 1, 0, 1},
+                { 1, 0, 1, 0, 1, 0, 1, 0},
+                { 0, 1, 0, 1, 0, 1, 0, 1},
+                { 1, 0, 1, 0, 1, 0, 1, 0},
+                { 0, 1, 0, 1, 0, 1, 0, 1},
+                { 1, 0, 1, 0, 1, 0, 1, 0},
+                { 0, 1, 0, 1, 0, 1, 0, 1},
+                { 1, 0, 1, 0, 1, 0, 1, 0}};
+
+        return baseBoard;
     }
 }

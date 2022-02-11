@@ -80,11 +80,9 @@ class BoardTest {
         assertTrue(testBoard.emptyTile(3,2));
         assertFalse(testBoard.emptyTile(1,0));
 
-
         testBoard.addPiece(0, 1,  true);
         assertFalse(testBoard.emptyTile(0,1));
         assertTrue(testBoard.emptyTile(3,1));
-
     }
 
     @Test
