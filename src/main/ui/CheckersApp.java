@@ -4,7 +4,6 @@ import model.Board;
 import model.Piece;
 
 
-import java.util.List;
 import java.util.Scanner;
 
 public class CheckersApp {
@@ -133,7 +132,7 @@ public class CheckersApp {
             System.out.print(y + " ");
             for (int x = 0; x <= 7; x++) {
 
-                switch (board.getBaseBoard()[y][x]) {
+                switch (board.getBoard()[y][x]) {
                     case 0:
                         System.out.print("   ");
                         break;
