@@ -129,6 +129,6 @@ class BoardTest {
                         { 0, 1, 0, 1, 0, 1, 0, 1},
                         { 1, 0, 1, 0, 1, 0, 1, 0}};
 
-        assertEquals(baseBoard,testBoard.getBaseBoard());
+        assertArrayEquals(baseBoard,testBoard.getBaseBoard());
     }
 }
