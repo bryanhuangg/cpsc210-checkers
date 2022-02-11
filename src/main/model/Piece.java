@@ -15,7 +15,6 @@ public class Piece {
         Piece.blackPiece = blackPiece;
     }
 
-
     // MODIFY: this
     // EFFECT: set x position of the checkers piece
     public void setX(int x) {

@@ -77,7 +77,6 @@ public class Board {
     public boolean emptyTile(int x, int y) {
 
         for (Piece p : pieces) {
-
             if (x == p.getX()) {
                 if (y == p.getY()) {
                     return false;
@@ -94,7 +93,7 @@ public class Board {
     }
 
     // RETURN: return matrix representing the board
-    public int[][] getBaseBoard() {
+    public int[][] getBoard() {
         return board;
     }
 }
