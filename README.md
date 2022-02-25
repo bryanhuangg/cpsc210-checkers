@@ -38,6 +38,14 @@ As a user, I want to be able to move my pieces
 <li> 
 As a user, I want to be able to view the current state of my checkers board
 </li>
+<br>
+<li> 
+As a user, I want to be able to save the current state of my board
+</li>
+
+<li> 
+As a user, I want to have the option to load saved states of my checker boards
+</li>
 
 
 
