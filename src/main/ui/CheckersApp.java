@@ -59,6 +59,8 @@ public class CheckersApp {
         System.out.println("\tr -> remove a piece");
         System.out.println("\tm -> move a pieces");
         System.out.println("\tc -> count number of pieces");
+        System.out.println("\tl -> load previous board");
+        System.out.println("\ts -> save current board");
         System.out.println("\tq -> quit");
     }
 
@@ -73,6 +75,10 @@ public class CheckersApp {
             movePiece();
         } else if (command.equals("c")) {
             countPieces();
+        } else if (command.equals("s")) {
+            // TODO
+        } else if (command.equals("l")) {
+            // TODO
         } else {
             System.out.println("Selection not valid...");
         }

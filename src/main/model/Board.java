@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.LinkedList;
 import java.util.List;
 
 // Simulates a checkers board and it's pieces
-public class Board {
+public class Board implements Writable {
     // A 8x8 checkers board with 0 representing white tiles and 1 representing black tiles
     private static final int[][] board =
             {{ 0, 1, 0, 1, 0, 1, 0, 1},
@@ -103,5 +106,11 @@ public class Board {
                 { 1, 0, 1, 0, 1, 0, 1, 0}};
 
         return baseBoard;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        //TODO
+        return null;
     }
 }

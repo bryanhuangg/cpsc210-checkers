@@ -1,8 +1,11 @@
 package model;
 
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a Checkers piece on a board
-public class Piece {
+public class Piece implements Writable {
 
     private int posX;               // X position of a piece
     private int posY;               // Y position of a piece
@@ -41,5 +44,11 @@ public class Piece {
     // EFFECT: return true if a black piece, else false;
     public boolean getIsBlackPiece() {
         return isBlackPiece;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        // TODO
+        return null;
     }
 }
