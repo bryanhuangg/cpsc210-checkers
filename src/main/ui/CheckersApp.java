@@ -2,18 +2,25 @@ package ui;
 
 import model.Board;
 import model.Piece;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CheckersApp {
+    private static final String JSON_STORE = "./data/checkers.json";
     protected Board board;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECT: run the checkers application
-    public CheckersApp() {
+    public CheckersApp() throws FileNotFoundException {
         runCheckers();
     }
 
@@ -49,6 +56,8 @@ public class CheckersApp {
     private void init() {
         board = new Board();
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         input.useDelimiter("\n");
     }
 
@@ -76,9 +85,9 @@ public class CheckersApp {
         } else if (command.equals("c")) {
             countPieces();
         } else if (command.equals("s")) {
-            // TODO
+            saveBoard();
         } else if (command.equals("l")) {
-            // TODO
+            loadBoard();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -220,4 +229,29 @@ public class CheckersApp {
             System.out.println();
         }
     }
+
+    // EFFECTS: saves the board to file
+    private void saveBoard() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(board);
+            jsonWriter.close();
+            System.out.println("Board saved to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: loads board from file
+    private void loadBoard() {
+        try {
+            board = jsonReader.read();
+            System.out.println("Board loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
 }

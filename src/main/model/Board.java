@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -20,12 +21,11 @@ public class Board implements Writable {
             { 1, 0, 1, 0, 1, 0, 1, 0}};
 
     // List of all the pieces currently on the board
-    private List<Piece> pieces;
+    private final List<Piece> pieces;
 
     // EFFECT: create an empty board with no pieces
     public Board() {
         pieces = new LinkedList<>();
-
     }
 
     // MODIFIES: this
@@ -110,7 +110,18 @@ public class Board implements Writable {
 
     @Override
     public JSONObject toJson() {
-        //TODO
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("Pieces", piecesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns pieces on this board to JSON array
+    private JSONArray piecesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Piece p : pieces) {
+            jsonArray.put(p.toJson());
+        }
+        return jsonArray;
     }
 }

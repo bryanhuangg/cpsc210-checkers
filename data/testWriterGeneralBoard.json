@@ -1,0 +1,12 @@
+{"Pieces": [
+    {
+        "y position": 1,
+        "is black piece?": true,
+        "x position": 0
+    },
+    {
+        "y position": 3,
+        "is black piece?": false,
+        "x position": 0
+    }
+]}

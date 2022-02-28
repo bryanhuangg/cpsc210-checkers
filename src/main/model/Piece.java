@@ -9,7 +9,7 @@ public class Piece implements Writable {
 
     private int posX;               // X position of a piece
     private int posY;               // Y position of a piece
-    private boolean isBlackPiece;  // true if black piece, false if white piece
+    private final boolean isBlackPiece;  // true if black piece, false if white piece
 
     // EFFECT: create a new checkers piece on (x,y) with a boolean to clarify piece colour
     public Piece(int x, int y, boolean blackPiece) {
@@ -48,7 +48,10 @@ public class Piece implements Writable {
 
     @Override
     public JSONObject toJson() {
-        // TODO
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("x position", posX);
+        json.put("y position", posY);
+        json.put("is black piece?", isBlackPiece);
+        return json;
     }
 }
