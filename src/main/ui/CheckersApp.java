@@ -9,7 +9,6 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class CheckersApp {
@@ -76,28 +75,37 @@ public class CheckersApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("a")) {
-            addPiece();
-        } else if (command.equals("r")) {
-            removePiece();
-        } else if (command.equals("m")) {
-            movePiece();
-        } else if (command.equals("c")) {
-            countPieces();
-        } else if (command.equals("s")) {
-            saveBoard();
-        } else if (command.equals("l")) {
-            loadBoard();
-        } else {
-            System.out.println("Selection not valid...");
+
+        switch (command) {
+            case("a"):
+                addPiece();
+                break;
+            case("r"):
+                removePiece();
+                break;
+            case("m"):
+                movePiece();
+                break;
+            case("c"):
+                countPieces();
+                break;
+            case("s"):
+                saveBoard();
+                break;
+            case("l"):
+                loadBoard();
+                break;
+            default:
+                System.out.println("Selection not valid...");
+                break;
         }
     }
 
     // EFFECTS: print out how many pieces are currently on the board
     private void countPieces() {
-        List<Piece> empty = new LinkedList<>();
 
-        if (!board.getPieces().equals(empty)) {
+
+        if (!board.getPieces().equals(new LinkedList<>())) {
             System.out.println();
             System.out.println("Current number of pieces on the board: " + board.getPieces().size());
         } else {
@@ -112,7 +120,7 @@ public class CheckersApp {
         Scanner addInput = new Scanner(System.in);
 
         System.out.println("Creating a new piece...");
-        System.out.println("Enter x coord, y coord and 'true' if black piece");
+        System.out.println("Enter x cord, y cord and 'true' if black piece");
 
         int x = addInput.nextInt();
         int y = addInput.nextInt();
