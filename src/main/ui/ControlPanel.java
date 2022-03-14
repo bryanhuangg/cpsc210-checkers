@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -138,7 +140,6 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 
 
-
         add(new JLabel("Select Tile"));
         add(selectX);
         add(selectY);
@@ -178,22 +179,26 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
-        int sx = Integer.parseInt(selectX.getText());
-        int sy = Integer.parseInt(selectY.getText());
-        int tx = Integer.parseInt(targetX.getText());
-        int ty = Integer.parseInt(targetY.getText());
-        boolean c = colour.isSelected();
+        try {
+            int sx = Integer.parseInt(selectX.getText());
+            int sy = Integer.parseInt(selectY.getText());
+            int tx = Integer.parseInt(targetX.getText());
+            int ty = Integer.parseInt(targetY.getText());
+            boolean c = colour.isSelected();
 
-        if (e.getSource() == add) {
-            addPiece(sx,sy,c);
-        }
+            if (e.getSource() == add) {
+                addPiece(sx,sy,c);
+            }
 
-        if (e.getSource() == remove) {
-            removePiece(sx,sy);
-        }
+            if (e.getSource() == remove) {
+                removePiece(sx,sy);
+            }
 
-        if (e.getSource() == move) {
-            movePiece(sx,sy,tx,ty);
+            if (e.getSource() == move) {
+                movePiece(sx,sy,tx,ty);
+            }
+        } catch (NumberFormatException n) {
+            JOptionPane.showMessageDialog(null, "Error: Non integer in field");
         }
     }
 
