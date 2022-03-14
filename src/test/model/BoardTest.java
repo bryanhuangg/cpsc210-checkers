@@ -144,4 +144,11 @@ class BoardTest {
         testBoard.newGame();
         assertEquals(16, testBoard.getPieces().size());
     }
+
+    @Test
+    void testGetCurrentBoard() {
+        testBoard.addPiece(0,1, false);
+        int[][] temp = testBoard.getCurrentBoard();
+        assertEquals(3,temp[1][0]);
+    }
 }
