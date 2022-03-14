@@ -21,15 +21,15 @@ public class Board implements Writable {
             { 1, 0, 1, 0, 1, 0, 1, 0}};
 
     // List of all the pieces currently on the board
-    private final List<Piece> pieces;
+    private List<Piece> pieces;
 
-    // EFFECT: create an empty board with no pieces
+    // EFFECTS: create an empty board with no pieces
     public Board() {
         pieces = new LinkedList<>();
     }
 
     // MODIFIES: this
-    // EFFECT: if a valid location place piece with a unique id on board and return true, else return false
+    // EFFECTS: if a valid location place piece with a unique id on board and return true, else return false
     public boolean addPiece(int x, int y, boolean blackPiece) {
 
         if (withinBoard(x,y) && placeableTile(x,y) && emptyTile(x,y)) {
@@ -43,7 +43,7 @@ public class Board implements Writable {
 
     // REQUIRE: current piece on a black tile
     // MODIFIES: this
-    // EFFECT: if given a placeable tile, move a piece to given coordinate and produce true, else false
+    // EFFECTS: if given a placeable tile, move a piece to given coordinate and produce true, else false
     public void movePiece(Piece p, int x, int y) {
         if (withinBoard(x,y) && placeableTile(x,y) && emptyTile(x,y)) {
             p.setXPos(x);
@@ -54,7 +54,7 @@ public class Board implements Writable {
 
     // REQUIRES: index < pieces.size()
     // MODIFIES: this
-    // EFFECT: removes the piece on given index of pieces and produce true, else false
+    // EFFECTS: removes the piece on given index of pieces and produce true, else false
     public void deletePiece(Piece piece) {
         pieces.remove(piece);
     }
@@ -76,7 +76,7 @@ public class Board implements Writable {
     }
 
 
-    // EFFECT: produce true if no piece is already on a tile, else false
+    // EFFECTS: produce true if no piece is already on a tile, else false
     public boolean emptyTile(int x, int y) {
 
         for (Piece p : pieces) {
@@ -87,12 +87,12 @@ public class Board implements Writable {
         return true;
     }
 
-    // EFFECT: return list of pieces on the board;
+    // EFFECTS: return list of pieces on the board;
     public List<Piece> getPieces() {
         return pieces;
     }
 
-    // RETURN: return matrix representing an empty checkers board
+    // EFFECTS: return matrix representing an empty checkers board
     public int[][] getBaseBoard() {
 
         int[][] baseBoard =
@@ -107,6 +107,48 @@ public class Board implements Writable {
 
         return baseBoard;
     }
+
+    // EFFECTS: return matrix representing current checkers board
+    //         0 = white tile, 1 = black tile, 2 = black piece, 3 = white piece
+    public int[][] getCurrentBoard() {
+        int[][] currentBoard = getBaseBoard();
+
+        for (Piece p: pieces) {
+            if (p.getIsBlackPiece()) {
+                currentBoard[p.getYPos()][p.getXPos()] = 2;
+            } else {
+                currentBoard[p.getYPos()][p.getXPos()] = 3;
+            }
+        }
+
+        return currentBoard;
+    }
+
+    // MODIFIES: this
+    // EFFECT: removes all pieces
+    public void clearBoard() {
+        pieces = new LinkedList<>();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets pieces to standard starting position
+    public void newGame() {
+        clearBoard();
+        for (int i = 1; i <= 7; i += 2) {
+            addPiece(i,0,true);
+        }
+        for (int i = 0; i <= 7; i += 2) {
+            addPiece(i,1,true);
+        }
+
+        for (int i = 1; i <= 7; i += 2) {
+            addPiece(i,6,false);
+        }
+        for (int i = 0; i <= 7; i += 2) {
+            addPiece(i,7,false);
+        }
+    }
+
 
     @Override
     public JSONObject toJson() {

@@ -118,7 +118,7 @@ class BoardTest {
     }
 
     @Test
-    void getBaseBoard() {
+    void testGetBaseBoard() {
         int[][] baseBoard =
                         {{ 0, 1, 0, 1, 0, 1, 0, 1},
                         { 1, 0, 1, 0, 1, 0, 1, 0},
@@ -130,5 +130,18 @@ class BoardTest {
                         { 1, 0, 1, 0, 1, 0, 1, 0}};
 
         assertArrayEquals(baseBoard,testBoard.getBaseBoard());
+    }
+
+    @Test
+    void testClearBoard() {
+        testBoard.addPiece(0,1, false);
+        testBoard.clearBoard();
+        assertEquals(0, testBoard.getPieces().size());
+    }
+
+    @Test
+    void testNewGame() {
+        testBoard.newGame();
+        assertEquals(16, testBoard.getPieces().size());
     }
 }
