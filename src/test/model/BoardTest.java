@@ -148,7 +148,9 @@ class BoardTest {
     @Test
     void testGetCurrentBoard() {
         testBoard.addPiece(0,1, false);
+        testBoard.addPiece(1,0, true);
         int[][] temp = testBoard.getCurrentBoard();
         assertEquals(3,temp[1][0]);
+        assertEquals(2,temp[0][1]);
     }
 }

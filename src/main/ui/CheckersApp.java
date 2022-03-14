@@ -32,6 +32,7 @@ public class CheckersApp extends JFrame {
         centreOnScreen();
         setVisible(true);
         addTimer();
+        setResizable(false);
     }
 
     // Set up timer
