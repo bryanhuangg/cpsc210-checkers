@@ -1,11 +1,15 @@
 package ui;
 
 import model.Board;
+import model.EventLog;
+import model.Event;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 
 
@@ -33,6 +37,17 @@ public class CheckersApp extends JFrame {
         setVisible(true);
         addTimer();
         setResizable(false);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                for (Event next : EventLog.getInstance()) {
+                    System.out.println(next.toString() + "\n\n");
+                }
+            }
+        });
+
     }
 
     // Set up timer

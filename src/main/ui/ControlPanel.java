@@ -1,6 +1,8 @@
 package ui;
 
 import model.Board;
+import model.Event;
+import model.EventLog;
 import model.Piece;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -119,6 +121,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             }
         });
         add(newGame);
+        EventLog.getInstance().logEvent(new Event("Started a new checkers game"));
     }
 
     // EFFECTS: renders input text field for targeted x coordinate
@@ -210,6 +213,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(null, "Error: Can not add piece there");
         }
+        EventLog.getInstance().logEvent(new Event("Added a piece to the board"));
     }
 
     // MODIFIES: app
@@ -222,6 +226,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             }
         }
         app.getBoard().deletePiece(remove);
+        EventLog.getInstance().logEvent(new Event("Removed a piece from the board"));
     }
 
     // MODIFIES: app
@@ -234,6 +239,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             }
         }
         app.getBoard().movePiece(move,tx,ty);
+        EventLog.getInstance().logEvent(new Event("Moved a piece on the board"));
     }
 
 

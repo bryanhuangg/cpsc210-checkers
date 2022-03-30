@@ -50,3 +50,46 @@ As a user, I want to have the option to load saved states of my checker boards
 
 
 </ul>
+
+___
+
+<em>Phase 4: Task 2</em>
+<ul>
+
+A representative sample of the events that occurs when my program runs:
+
+
+
+Wed Mar 30 10:40:25 PDT 2022
+Started a new checkers game
+
+
+Wed Mar 30 10:40:27 PDT 2022
+Moved a piece on the board
+
+
+Wed Mar 30 10:40:29 PDT 2022
+Added a piece to the board
+
+
+Wed Mar 30 10:40:31 PDT 2022
+Removed a piece from the board
+
+
+Wed Mar 30 10:40:33 PDT 2022
+Loaded checkers board from file
+
+Wed Mar 30 10:40:35 PDT 2022
+Saved current checkers board to file
+
+</ul>
+
+___
+
+<em>Phase 4: Task 3</em>
+<ul>
+
+
+
+
+</ul>

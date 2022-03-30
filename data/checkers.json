@@ -1,5 +1,82 @@
-{"Pieces": [{
-    "y position": 0,
-    "is black piece?": false,
-    "x position": 1
-}]}
+{"Pieces": [
+    {
+        "y position": 0,
+        "is black piece?": true,
+        "x position": 1
+    },
+    {
+        "y position": 0,
+        "is black piece?": true,
+        "x position": 3
+    },
+    {
+        "y position": 0,
+        "is black piece?": true,
+        "x position": 5
+    },
+    {
+        "y position": 0,
+        "is black piece?": true,
+        "x position": 7
+    },
+    {
+        "y position": 1,
+        "is black piece?": true,
+        "x position": 0
+    },
+    {
+        "y position": 1,
+        "is black piece?": true,
+        "x position": 2
+    },
+    {
+        "y position": 1,
+        "is black piece?": true,
+        "x position": 4
+    },
+    {
+        "y position": 1,
+        "is black piece?": true,
+        "x position": 6
+    },
+    {
+        "y position": 6,
+        "is black piece?": false,
+        "x position": 1
+    },
+    {
+        "y position": 6,
+        "is black piece?": false,
+        "x position": 3
+    },
+    {
+        "y position": 6,
+        "is black piece?": false,
+        "x position": 5
+    },
+    {
+        "y position": 6,
+        "is black piece?": false,
+        "x position": 7
+    },
+    {
+        "y position": 7,
+        "is black piece?": false,
+        "x position": 0
+    },
+    {
+        "y position": 7,
+        "is black piece?": false,
+        "x position": 2
+    },
+    {
+        "y position": 7,
+        "is black piece?": false,
+        "x position": 4
+    },
+    {
+        "y position": 7,
+        "is black piece?": false,
+        "x position": 6
+    }
+]}

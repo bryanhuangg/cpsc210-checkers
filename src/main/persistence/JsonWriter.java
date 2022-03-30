@@ -1,6 +1,8 @@
 package persistence;
 
 import model.Board;
+import model.Event;
+import model.EventLog;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -41,5 +43,6 @@ public class JsonWriter {
     // EFFECTS: writes string to file
     private void saveToFile(String json) {
         writer.print(json);
+        EventLog.getInstance().logEvent(new Event("Saved current checkers board to file"));
     }
 }

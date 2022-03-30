@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import model.Event;
+import model.EventLog;
 import model.Piece;
 import org.json.*;
 
@@ -36,6 +38,7 @@ public class JsonReader {
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
+            EventLog.getInstance().logEvent(new Event("Loaded prior saved checkers board"));
         }
 
         return contentBuilder.toString();
