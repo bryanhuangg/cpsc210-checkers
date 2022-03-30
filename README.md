@@ -89,7 +89,8 @@ ___
 <em>Phase 4: Task 3</em>
 <ul>
 
-
-
+  If I were to have more time to refactor the program, I would split Board into 2 classes.
+I would have one class to deal with the data of the board and another to perform any actions.
+That way my program will be a bit more cohesive.
 
 </ul>
